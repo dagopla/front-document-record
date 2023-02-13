@@ -35,7 +35,7 @@ export const FormRegisterDb = () => {
         initialValues={{
           documentId: 0,
           radicado: '',
-          tipo: '',
+          tipo: 'recepcion',
           radicador: '0',
           seccion: '0',
           serie: '0',
@@ -74,7 +74,6 @@ export const FormRegisterDb = () => {
         }}
         validationSchema={Yup.object({
           tipo: Yup.string()
-            .notOneOf(['0'], 'Requerido')
             .required('Requerido'),
           radicado: Yup.string()
             .required('Requerido'),
@@ -83,6 +82,8 @@ export const FormRegisterDb = () => {
           //   .required('Requerido'),
           folios: Yup.number()
             .notOneOf([0], 'Requerido')
+            .integer()
+            .min(0, 'Debe ser un N° positivo')
             .required('Requerido'),
           fecha: Yup.string()
             .notOneOf([''], 'Requerido')
@@ -107,9 +108,9 @@ export const FormRegisterDb = () => {
             <InputSelect
               label="Tipo"
               name="tipo"
-              data={[{ id: 'envio', nombre: 'Envio' },
-              { id: 'recepcion', nombre: 'Recepción' }]} />
-
+              data={[{ id: 'recepcion', nombre: 'Recepción' },
+              { id: 'envio', nombre: 'Envio' }]} />
+              
             <SelectDepend
               label="Radicado Por"
               name='radicador'

@@ -5,7 +5,7 @@ export const DocumentsToLoad = () => {
     const [statusRequest, setStatusRequest] = useState<number>(0)
     const handleRequestDocumentsToLoad = async () => {
         try {
-            const response = await axios.get(`${localStorage.getItem("UrlGedsysApi")!}documentos/cargar`,);
+            const response = await axios.get(`${localStorage.getItem("UrlGedsysApi")!}/documentos/cargar`,);
             console.log(response);
             setStatusRequest(response.status);
         } catch (error) {
@@ -28,7 +28,7 @@ export const DocumentsToLoad = () => {
     }
 
     return (<>
-        <h1 className="text-3xl">Documentos a cargar</h1>
+        <h1 className="text-3xl">Documentos por Cargar</h1>
         <br />
         <button className="btn-primary m-5" onClick={handleRequestDocumentsToLoad}>Documentos por cargar</button>
         <br />

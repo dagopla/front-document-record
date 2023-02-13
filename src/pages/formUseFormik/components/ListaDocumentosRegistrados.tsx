@@ -10,7 +10,7 @@ export const ListaDocumentosRegistrados = () => {
             Documentos Cargados</h1>
         <br />
         <ul className=' h-40 overflow-auto'>
-          {documentList.map(doc=><li key={doc}  className="">{doc}</li>)} 
+          {documentList.map((doc,index)=><li key={index}  className="">{doc}</li>)} 
         </ul>
     </div>
   )

@@ -17,7 +17,7 @@ export const Configuration = () => {
     <div className="m-24   shadow-md shadow-palen-0 p-10">
       <form onSubmit={changeUrlQuery} className="flex flex-col">
         <h1>Ruta de la Api</h1>
-        <input type="text" id="url" placeholder="http://localhost:8090/api" 
+        <input type="text" id="url" placeholder={`${localStorage.getItem("UrlGedsysApi")}`}
         className="my-5 border border-palen-200 bg-palen-0 h-9 rounded-sm p-2 text-palen-900" 
         value={url}
         onChange={(e)=>setUrl(e.target.value)}/>
