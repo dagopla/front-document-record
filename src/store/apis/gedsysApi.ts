@@ -5,25 +5,25 @@ export const gedsysApi=createApi({
     baseQuery: fetchBaseQuery({ baseUrl: localStorage.getItem("UrlGedsysApi")! }),
     endpoints: (builder) => ({
         getUsuariosActivos: builder.query<UsuarioActivo[], string>({
-          query: () => `users`,
+          query: () => `/users`,
         }),
         getSecciones: builder.query<Seccion[],string>({
-          query: () => `secciones`,
+          query: () => `/secciones`,
         }),
         getSeries: builder.query<Serie[], number>({
-          query: (idSeccion) => `series/${idSeccion}`,
+          query: (idSeccion) => `/series/${idSeccion}`,
         }),
         getSubseries: builder.query<SubSerie[], number>({
-          query: (idSerie) => `subseries/${idSerie}`,
+          query: (idSerie) => `/subseries/${idSerie}`,
         }),
         getTiposDocumentales: builder.query<TipoDocumental[], string>({
-          query: () => `tipos-documentales`,
+          query: () => `/tipos-documentales`,
         }),
         getEntidades: builder.query<Entidad[], string>({
-          query: () => `entidades`,
+          query: () => `/entidades`,
         }),
         getDocumentos: builder.query<Documento[], string>({
-          query: () => `documentos/cargados`,
+          query: () => `/documentos/cargados`,
           
         }),
         getDocumentosPendientes: builder.query<Documento[], string>({
@@ -32,7 +32,7 @@ export const gedsysApi=createApi({
         
         postDocumentoRegistrar: builder.mutation<any, any>({
           query: (body) => ({
-            url: `documentos/registrar`,
+            url: `/documentos/registrar`,
             method: 'POST',
             body,
           }),

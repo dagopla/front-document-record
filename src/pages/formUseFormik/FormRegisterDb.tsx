@@ -190,7 +190,7 @@ export const FormRegisterDb = () => {
 
     <div className='bg-palen-0 h-screen mx-72 shadow-lg shadow-palen-500' >
       {docCargado!>0?<iframe
-        src={`http://localhost:8090/api/documentos/preview/${docCargado}`}
+        src={`${localStorage.getItem("UrlGedsysApi")}/documentos/preview/${docCargado}`}
         className='h-screen w-full'
         title="pdf-viewer"
         />

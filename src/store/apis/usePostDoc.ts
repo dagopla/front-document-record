@@ -9,7 +9,7 @@ export const usePostDoc = async (documentoRegistro:PostRequest) => {
       }
     }
     try {
-        const response = await axios.post<FormData>(`${localStorage.getItem("UrlGedsysApi")!}documentos/registrar`,
+        const response = await axios.post<FormData>(`${localStorage.getItem("UrlGedsysApi")!}/documentos/registrar`,
          documentoRegistro,
          config);
         console.log(response.data);
