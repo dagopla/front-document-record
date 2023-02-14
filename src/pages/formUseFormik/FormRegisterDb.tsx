@@ -53,9 +53,12 @@ export const FormRegisterDb = () => {
           reloadListDocument=false;
           if (confirm("¿Estás seguro de que deseas realizar esta acción?")) {
             values.documentId=docCargado!;
-            values.tipo==='envio'
-            ?values.nombreRemitente=usuarios.filter(u=>u.id===parseInt(values.remitente))[0].nombre
-            :values.nombreRemitente=entidades.filter(e=>e.id===parseInt(values.remitente))[0].nombre
+            if (values.remitente!='0') {
+              (values.tipo==='envio')
+              ?values.nombreRemitente=usuarios.filter(u=>u.id===parseInt(values.remitente))[0].nombre
+              :values.nombreRemitente=entidades.filter(e=>e.id===parseInt(values.remitente))[0].nombre
+            
+            }
             const { resultPost } = useObjectPost(values);
             console.log(resultPost);
             usePostDoc(resultPost);
@@ -77,21 +80,22 @@ export const FormRegisterDb = () => {
             .required('Requerido'),
           radicado: Yup.string()
             .required('Requerido'),
-          // radicador: Yup.string()
-          //   .notOneOf(['0'],'Requerido')
-          //   .required('Requerido'),
+          radicador: Yup.string()
+            .notOneOf(['0'],'Requerido')
+            .required('Requerido'),
           folios: Yup.number()
             .notOneOf([0], 'Requerido')
             .integer()
             .min(0, 'Debe ser un N° positivo')
             .required('Requerido'),
-          fecha: Yup.string()
-            .notOneOf([''], 'Requerido')
+          fecha: Yup.date()
+            .max(new Date(),"Debe ser una fecha anterior")
             .required('Requerido'),
           asunto: Yup.string()
             .max(2500, 'Debe de tener 15 caracteres o menos')
             .notOneOf([''], 'Requerido')
             .required('Requerido'),
+          
 
 
 

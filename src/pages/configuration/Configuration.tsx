@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { DocumentsToLoad } from './DocumentsToLoad';
 
@@ -6,18 +6,19 @@ import { DocumentsToLoad } from './DocumentsToLoad';
 export const Configuration = () => {
     const [url, setUrl] = useState<string>('');
     
-    const changeUrlQuery=()=>{
-        
+    const changeUrlQuery=()=>{        
         localStorage.setItem("UrlGedsysApi", url);
-        
     }
-    
+    let placeholder="http://example/api"
+    if (localStorage.getItem('UrlGedsysApi')!=null) {
+      placeholder=localStorage.getItem('UrlGedsysApi')!;
+    }
   return (
     <div className="flex flex-wrap">
     <div className="m-24   shadow-md shadow-palen-0 p-10">
       <form onSubmit={changeUrlQuery} className="flex flex-col">
         <h1>Ruta de la Api</h1>
-        <input type="text" id="url" placeholder={`${localStorage.getItem("UrlGedsysApi")}`}
+        <input type="text" id="url" placeholder={`${placeholder}`}
         className="my-5 border border-palen-200 bg-palen-0 h-9 rounded-sm p-2 text-palen-900" 
         value={url}
         onChange={(e)=>setUrl(e.target.value)}/>
