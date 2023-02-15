@@ -21,8 +21,7 @@ export const InputSelect = ( { label, ...props }: Props ) => {
         <>
             <label className='label-primary' htmlFor={ props.id || props.name }>{ label }</label>
             <select { ...field } { ...props } className='text-palen-900 border
-             border-palen-200 bg-palen-0 h-9 rounded-sm p-2'
-             >
+             border-palen-200 bg-palen-0 h-9 rounded-sm p-2'>
                 {props.name==="tipo"?<></>:<option value='0' >Na</option>}
                 {props.data?.map((d:any)=>
                 <option key={d.id} className=' h-9'  value={d.id}>{d.nombre}</option>)}

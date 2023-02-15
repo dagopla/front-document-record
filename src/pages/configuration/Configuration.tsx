@@ -29,7 +29,7 @@ export const Configuration = () => {
     <div  className="m-24  shadow-md shadow-palen-0 p-10">
       <DocumentsToLoad/>
     </div>
-        
+    
     </div>
   )
 }
